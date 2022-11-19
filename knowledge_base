@@ -1,0 +1,38 @@
+% KnowledgeBase
+
+presents('Perlaki Attila', 'Számítógép arhitektúrák').
+presents('Perlaki Attila', 'Magasszintű programozási nyelvek').
+presents('Dr. Godó Zoltán Attila', 'Számítógép arhitektúrák').
+presents('Dr. Godó Zoltán Attila', 'Magasszintű programozási nyelvek').
+presents('Dr. Stóka György', 'Absztrakt matematika').
+presents('Dr. Stóka György', 'Programozási logika').
+
+goesToCourse('Veres Zoltán', 'Számítógép arhitektúrák').
+goesToCourse('Veres Zoltán', 'Magasszintű programozási nyelvek').
+goesToCourse('Veres Zoltán', 'Bevezetés a programozásba').
+goesToCourse('Veres Zoltán', 'Absztrakt matematika').
+goesToCourse('Veres Zoltán', 'Programozási logika').
+goesToCourse('Papp Kevin', 'Számítógép arhitektúrák').
+goesToCourse('Papp Kevin', 'Magasszintű programozási nyelvek').
+goesToCourse('Papp Kevin', 'Bevezetés a programozásba').
+goesToCourse('Papp Kevin', 'Absztrakt matematika').
+goesToCourse('Papp Kevin', 'Programozási logika').
+goesToCourse('Mihály Károly', 'Számítógép arhitektúrák').
+goesToCourse('Mihály Károly', 'Magasszintű programozási nyelvek').
+goesToCourse('Mihály Károly', 'Bevezetés a programozásba').
+goesToCourse('Mihály Károly', 'Absztrakt matematika').
+goesToCourse('Laczkó Lajos', 'Programozási logika').
+goesToCourse('Laczkó Lajos', 'Számítógép arhitektúrák').
+goesToCourse('Laczkó Lajos', 'Magasszintű programozási nyelvek').
+goesToCourse('Laczkó Lajos', 'Bevezetés a programozásba').
+goesToCourse('Laczkó Lajos', 'Absztrakt matematika').
+goesToCourse('Laczkó Lajos', 'Programozási logika').
+
+teacher(Teacher_name) :- presents(Teacher_name, Course_name).
+student(Student_name) :- goesToCourse(Student_name, Course_name).
+course(Course_name) :- presents(Teacher_name, Course_name).
+user(Teacher_name) :- teacher(Teacher_name).
+user(Student_name) :- student(Student_name).
+
+whoTeaches(Student_name, Teacher_name) :- goesToCourse(Student_name, Course_name), presents(Teacher_name, Course_name).
+% whoTeaches('Veres Zoltán', Teacher_name)
