@@ -28,11 +28,24 @@ goesToCourse('Laczkó Lajos', 'Bevezetés a programozásba').
 goesToCourse('Laczkó Lajos', 'Absztrakt matematika').
 goesToCourse('Laczkó Lajos', 'Programozási logika').
 
-teacher(Teacher_name) :- presents(Teacher_name, Course_name).
-student(Student_name) :- goesToCourse(Student_name, Course_name).
-course(Course_name) :- presents(Teacher_name, Course_name).
+courseExamDate('Számítógép arhitektúrák', '2022-12-01').
+courseExamDate('Számítógép arhitektúrák', '2022-12-02').
+courseExamDate('Magasszintű programozási nyelvek', '2022-12-03').
+courseExamDate('Magasszintű programozási nyelvek', '2022-12-04').
+courseExamDate('Bevezetés a programozásba', '2022-12-05').
+courseExamDate('Bevezetés a programozásba', '2022-12-06').
+courseExamDate('Absztrakt matematika', '2022-12-07').
+courseExamDate('Absztrakt matematika', '2022-12-08').
+courseExamDate('Programozási logika', '2022-12-09').
+courseExamDate('Programozási logika', '2022-12-10').
+
+teacher(Teacher_name, Course_name) :- presents(Teacher_name, Course_name).
+student(Student_name, Course_name) :- goesToCourse(Student_name, Course_name).
+course(Course_name, Teacher_name) :- presents(Teacher_name, Course_name).
 user(Teacher_name) :- teacher(Teacher_name).
 user(Student_name) :- student(Student_name).
 
 whoTeaches(Student_name, Teacher_name) :- goesToCourse(Student_name, Course_name), presents(Teacher_name, Course_name).
 % whoTeaches('Veres Zoltán', Teacher_name)
+whenCanStudentHaveExam(Student_name, Course_name, Course_exam_date) :- courseExamDate(Course_name, Course_exam_date), goesToCourse(Student_name, Course_name).
+% whenCanStudentHaveExam('Veres Zoltán', Course_name, Course_exam_date)
